@@ -59,10 +59,13 @@ export const main = (container, option, object) => {
 		// scene.add( shadowCameraHelper );
 
   }
-  object.forEach(obj => {
+  object.forEach(async obj => {
     if(obj.show) {
-      const geometry = createAllTypeGeometry(obj) 
-      scene.add(geometry)
+      const geometry = await createAllTypeGeometry(obj) 
+      if(geometry) {
+        scene.add(geometry)
+        geometry.dispose()
+      }
     }
   })
   function resizeRendererToDisplaySize(renderer) {

@@ -1,16 +1,23 @@
 import * as THREE from "three";
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 export default class Window {
     constructor(arg) {
         for(let x in arg) {
             this[x] = arg[x]
         }
     }
-    createMesh() {
-        const geometry = new THREE.BoxGeometry( this.width, this.height, this.depth, this.widthSegments, this.heightSegments, this.depthSegments );
-        const material = new THREE.MeshBasicMaterial( {color: this.color, side: THREE.DoubleSide} );
-        const box = new THREE.Mesh( geometry, material );
-        material.dispose()
-        geometry.dispose()
+    async createMesh() {
+        const loader = new GLTFLoader();
+        const loadP =  () => {
+            return new Promise((res, rej) => {
+                loader.load('/static/models/window/scene.gltf', (gltf) => {
+                    res(gltf)
+                })
+            })   
+        }
+        const gltf = await loadP()
+        gltf.scene.scale.set(0.1, 0.1, 0.1)
+        const box = gltf.scene.clone()
         box.position.set(this.x, this.y, this.z)
         box.rotation.x = this.rotation.x
         box.rotation.y = this.rotation.y
