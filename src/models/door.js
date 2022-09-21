@@ -6,8 +6,7 @@ export default class Door {
         }
     }
     createMesh() {
-        const img = require('@/assets/texture/door.jpg')
-        const texture = new THREE.TextureLoader().load(img);
+        const texture = new THREE.TextureLoader().load( '/static/texture/door.jpg');
         // texture.wrapS = this.wrapS
         // texture.wrapT = this.wrapT
         // texture.repeat.set(1,1)

@@ -7,8 +7,14 @@ export default class Ground {
     }
     createMesh() {
         const geometry = new THREE.PlaneGeometry( this.width, this.height, this.widthSegments, this.heightSegments );
-        const material = new THREE.MeshBasicMaterial( {color: this.color, side: THREE.DoubleSide} );
+        let material = null
+        if(this.name == 'ground') {
+            material = new THREE.MeshLambertMaterial( {color: this.color, side: THREE.DoubleSide} );
+        } else {
+            material = new THREE.MeshBasicMaterial( {color: this.color, side: THREE.DoubleSide} );
+        }
         const plane = new THREE.Mesh( geometry, material );
+        plane.receiveShadow = true
         geometry.dispose()
         material.dispose()
         plane.position.set(this.x, this.y, this.z)

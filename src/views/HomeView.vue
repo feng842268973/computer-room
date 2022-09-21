@@ -9,11 +9,13 @@
 <script>
 import * as THREE from "three";
 import {main} from '@/util/index'
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 export default {
   name: 'HomeView',
     data() {
         return {
-            objects: []
+            objects: [],
+            scene: null,
         }
     },
     mounted() {
@@ -123,7 +125,7 @@ export default {
           width: 10,
           height: 10,
           depth: 4,
-          color: 0x000000,
+          color: 0x096aa8,
           widthSegments: 10,
           heightSegments: 10,
           depthSegments: 10,
@@ -143,7 +145,7 @@ export default {
           width: 10,
           height: 10,
           depth: 4,
-          color: 0x000000,
+          color: 0x096aa8,
           widthSegments: 10,
           heightSegments: 10,
           depthSegments: 10,
@@ -163,7 +165,7 @@ export default {
           width: 10,
           height: 10,
           depth: 4,
-          color: 0x000000,
+          color: 0x096aa8,
           widthSegments: 10,
           heightSegments: 10,
           depthSegments: 10,
@@ -183,7 +185,7 @@ export default {
           width: 10,
           height: 10,
           depth: 4,
-          color: 0x000000,
+          color: 0x096aa8,
           widthSegments: 10,
           heightSegments: 10,
           depthSegments: 10,
@@ -202,7 +204,7 @@ export default {
           show: true,
           width: 10,
           height: 20,
-          depth: 4,
+          depth: 2,
           widthSegments: 10,
           heightSegments: 10,
           depthSegments: 10,
@@ -210,13 +212,39 @@ export default {
           wrapT: THREE.RepeatWrapping,
         },
       ]
-        main('canvas-box', {
+      this.scene = main('canvas-box', {
             antialias: true,
             loadSyn: false,//是否启用异步加载
             showHelpGrid: false,//是否显示网格线
             clearColor: 0x002323,
             clearColorOpacity: 1,
         }, this.objects)
+        const loader = new GLTFLoader();
+        loader.load('/static/models/shelves/scene.gltf', (gltf) => {
+          console.log(gltf)
+          gltf.scene.scale.set(10, 10, 10)
+          gltf.scene.rotation.y = - Math.PI / 2
+          gltf.scene.traverse((object) => {
+              if (object.isMesh) {
+                object.castShadow = true
+                object.receiveShadow = true
+              }
+          })
+          const box = new THREE.Box3().setFromObject(gltf.scene)
+          let size = new THREE.Vector3()
+          box.getSize(size)
+          for(let i = 0; i < 10; i++) {
+            const geometry = gltf.scene.clone()
+            geometry.children.map((v, i) => {
+              if(v.material) {
+                v.material = gltf.scene.children[i].material.clone()
+              }
+            })
+            geometry.position.x = - 60 + i * (size.x + 4)
+            this.scene.add(geometry)
+          }
+        })
+
     }
 }
 </script>

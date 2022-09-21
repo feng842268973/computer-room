@@ -1,0 +1,11 @@
+Model Information:
+* title:	Shelves
+* source:	https://sketchfab.com/3d-models/shelves-6a1eb361570a4fdd9c94e9eea480f516
+* author:	Pricey1600 (https://sketchfab.com/Pricey1600)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Shelves" (https://sketchfab.com/3d-models/shelves-6a1eb361570a4fdd9c94e9eea480f516) by Pricey1600 (https://sketchfab.com/Pricey1600) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
