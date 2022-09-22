@@ -1,12 +1,24 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import Stats from 'three/examples/jsm/libs/stats.module.js'
 import {createAllTypeGeometry} from '@/util/type'
-export const main = (container, option, object) => {
-  const canvas = document.getElementById(container);
+export const main = (id, option, object) => {
+  const container = document.getElementById(id);
+  const canvas = document.createElement('canvas')
+  canvas.style.width = '100%'
+  canvas.style.height = '100%'
   const renderer = new THREE.WebGLRenderer({
     canvas,
     antialias: option.antialias
   });
+  container.appendChild(renderer.domElement); 
+  
+  {
+    const stats = new Stats();  
+    stats.domElement.style.position = 'absolute'; 
+    container.appendChild(stats.dom); 
+  }
+  
   renderer.setClearColor(option.clearColor, option.clearColorOpacity)
   renderer.shadowMap.enabled = true
   renderer.shadowMap.type = THREE.PCFSoftShadowMap
@@ -64,7 +76,7 @@ export const main = (container, option, object) => {
       const geometry = await createAllTypeGeometry(obj) 
       if(geometry) {
         scene.add(geometry)
-        geometry.dispose()
+        // geometry.dispose()
       }
     }
   })
@@ -90,7 +102,7 @@ export const main = (container, option, object) => {
 
 
     renderer.render(scene, camera);
-
+    stats.update();
     requestAnimationFrame(render);
   }
 
