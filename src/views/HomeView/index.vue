@@ -33,8 +33,8 @@ export default {
 <style lang="scss" scoped>
 .engine-room {
     #canvas-box {
-        width: 80%;
-        height: 800px;
+        width: 100vw;
+        height: 100vh;
         position: relative;
     }
 }

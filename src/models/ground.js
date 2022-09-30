@@ -8,7 +8,7 @@ export default class Ground {
     createMesh() {
         const geometry = new THREE.PlaneGeometry( this.width, this.height, this.widthSegments, this.heightSegments );
         let material = null
-        material = new THREE.MeshLambertMaterial( {color: this.color, side: THREE.DoubleSide} );
+        material = new THREE.MeshLambertMaterial( {color: this.color, side: THREE.DoubleSide, emissive: this.emissive} );
         const plane = new THREE.Mesh( geometry, material );
         plane.receiveShadow = true
         geometry.dispose()
@@ -17,6 +17,7 @@ export default class Ground {
         plane.rotation.x = this.rotation.x
         plane.rotation.y = this.rotation.y
         plane.rotation.z = this.rotation.z
+        plane.name = this.name
         return plane
     }
 }

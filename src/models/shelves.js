@@ -33,6 +33,8 @@ export default class Window {
             v.material = gltf.scene.children[i].material.clone()
           }
         })
+        geometry.name = this.name
+        geometry.clickable = this.clickable
         return geometry
     }
 }

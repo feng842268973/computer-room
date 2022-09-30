@@ -7,12 +7,13 @@ export default class Ground {
     }
     createMesh() {
         const texture = new THREE.TextureLoader().load( '/static/texture/wall.jpg');
-        const geometry = new THREE.PlaneGeometry( this.width, this.height, this.widthSegments, this.heightSegments );
+        const geometry = new THREE.BoxGeometry( this.width, this.height, this.depth , this.widthSegments, this.heightSegments, this.depthSegments );
         let material = null
         texture.wrapS = THREE.RepeatWrapping
         texture.wrapT = THREE.RepeatWrapping
         texture.repeat.set(100, 30)
-        material = new THREE.MeshBasicMaterial( {map: texture, side: THREE.DoubleSide} )
+        // 如果设置THREE.DoubleSide，raycaster会拾取对象两次
+        material = new THREE.MeshBasicMaterial( {map: texture, side: THREE.FrontSide} )
         const plane = new THREE.Mesh( geometry, material );
         plane.receiveShadow = true
         geometry.dispose()
@@ -21,6 +22,7 @@ export default class Ground {
         plane.rotation.x = this.rotation.x
         plane.rotation.y = this.rotation.y
         plane.rotation.z = this.rotation.z
+        plane.name = this.name
         return plane
     }
 }

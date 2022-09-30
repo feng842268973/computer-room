@@ -16,6 +16,7 @@ export const objects = [
       color: 0x13e260,
       widthSegments: 10,
       heightSegments: 10,
+      emissive: ''
     },
     {
       type: 'wall',
@@ -31,9 +32,11 @@ export const objects = [
       show: true,
       width: 200,
       height: 20,
+      depth : 4,
       color: 0xffffff,
       widthSegments: 10,
       heightSegments: 10,
+      depthSegments : 10,
     },
     {
       type: 'wall',
@@ -49,9 +52,11 @@ export const objects = [
       show: true,
       width: 200,
       height: 20,
+      depth : 4,
       color: 0xffffff,
       widthSegments: 10,
       heightSegments: 10,
+      depthSegments : 10,
     },
     {
       type: 'wall',
@@ -67,9 +72,11 @@ export const objects = [
       show: true,
       width: 100,
       height: 20,
+      depth : 4,
       color: 0xffffff,
       widthSegments: 10,
       heightSegments: 10,
+      depthSegments : 10,
     },
     {
       type: 'wall',
@@ -85,9 +92,11 @@ export const objects = [
       show: true,
       width: 100,
       height: 20,
+      depth : 4,
       color: 0xffffff,
       widthSegments: 10,
       heightSegments: 10,
+      depthSegments : 10,
     },
     {
       type: 'window',
@@ -183,7 +192,7 @@ export const objects = [
       show: true,
       width: 10,
       height: 20,
-      depth: 2,
+      depth: 5,
       widthSegments: 10,
       heightSegments: 10,
       depthSegments: 10,
@@ -206,6 +215,7 @@ export const objects = [
       widthSegments: 10,
       heightSegments: 10,
       depthSegments: 10,
+      clickable: true
     },
     {
       type: 'shelves',
@@ -225,6 +235,7 @@ export const objects = [
       widthSegments: 10,
       heightSegments: 10,
       depthSegments: 10,
+      clickable: true
     },
     {
       type: 'shelves',
@@ -244,6 +255,7 @@ export const objects = [
       widthSegments: 10,
       heightSegments: 10,
       depthSegments: 10,
+      clickable: true
     },
     {
       type: 'shelves',
@@ -263,5 +275,6 @@ export const objects = [
       widthSegments: 10,
       heightSegments: 10,
       depthSegments: 10,
+      clickable: true
     },
   ]

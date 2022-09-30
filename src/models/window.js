@@ -16,12 +16,13 @@ export default class Window {
             })   
         }
         const gltf = await loadP()
-        gltf.scene.scale.set(0.1, 0.1, 0.1)
+        gltf.scene.scale.set(0.1, 0.1, 0.8)
         const box = gltf.scene.clone()
         box.position.set(this.x, this.y, this.z)
         box.rotation.x = this.rotation.x
         box.rotation.y = this.rotation.y
         box.rotation.z = this.rotation.z
+        box.name = this.name
         return box
     }
 }

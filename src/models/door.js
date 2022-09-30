@@ -25,6 +25,7 @@ export default class Door {
         box.rotation.x = this.rotation.x
         box.rotation.y = this.rotation.y
         box.rotation.z = this.rotation.z
+        box.name = this.name
         return box
     }
 }
